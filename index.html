@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>SocketChat</title>
     <script   src="https://code.jquery.com/jquery-2.2.3.min.js"   integrity="sha256-a23g1Nt4dtEYOj7bR+vTu7+T8VP13humZFBJNIYoEJo="   crossorigin="anonymous"></script>
 </head>
 <body>
@@ -16,7 +16,7 @@
     <div id="posts" />
     <script src="/socket.io/socket.io.js"></script>
     <script type="text/javascript">
-        var socket = io.connect('http://localhost:8080');
+        var socket = io.connect('siochat.herokuapp.com');
         socket.on('message', function(message) {
             if (message.name == $('#name').val()){
                 $('#posts').prepend("<h2 style='color:red'> Me: " + message.text + "</h2>");
