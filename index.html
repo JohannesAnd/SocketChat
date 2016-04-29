@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script   src="https://code.jquery.com/jquery-2.2.3.min.js"   integrity="sha256-a23g1Nt4dtEYOj7bR+vTu7+T8VP13humZFBJNIYoEJo="   crossorigin="anonymous"></script>
+</head>
+<body>
+    <form id="form">
+        <p>Name:</p>
+        <input id="name" />
+        <p>Message:</p>
+        <input id="message" />
+        <input type="submit" />
+    </form>
+    <div id="posts" />
+    <script src="/socket.io/socket.io.js"></script>
+    <script type="text/javascript">
+        var socket = io.connect('http://localhost:8080');
+        socket.on('message', function(message) {
+            if (message.name == $('#name').val()){
+                $('#posts').prepend("<h2 style='color:red'> Me: " + message.text + "</h2>");
+
+            } else {
+                $('#posts').prepend("<h2>" + message.name + ": " + message.text + "</h2>");
+            }
+        });
+
+        $('form').submit(function(event) {
+            event.preventDefault();
+            var text = $('#message').val();
+            var name = $('#name').val();
+            socket.emit("message", {text: text, name: name});
+            $('#message').val('');
+        });
+    </script>
+</body>
+</html>
