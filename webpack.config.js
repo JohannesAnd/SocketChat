@@ -1,4 +1,14 @@
+var path = require('path');
+
 module.exports = {
+    entry:  [
+        path.join(__dirname, 'main.js')
+    ],
+    output: {
+        path: path.join(__dirname, '/dist/'),
+        filename: '[name].js',
+        publicPath: '/'
+    },
     module: {
         loaders: [{
             test: /\.css?$/,
@@ -9,7 +19,7 @@ module.exports = {
                 exclude: /node_modules/,
                 loader: 'babel',
                 query: {
-                    "presets": ["react", "es2015", "stage-0", "react-hmre"],
+                    "presets": ["react", "es2015", "stage-0"],
                     "plugins": [
                         ["transform-decorators-legacy"]
                     ]
