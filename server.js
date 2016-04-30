@@ -31,18 +31,33 @@ var server = app.listen(process.env.PORT || 8080);
 var io = require('socket.io').listen(server);
 
 var connections = [];
+var colors = {}
 var posts = [];
+
+function get_random_color() {
+    function c() {
+        var hex = Math.floor(Math.random()*256).toString(16);
+        return ("0"+String(hex)).substr(-2); // pad with zero
+    }
+    return "#"+c()+c()+c();
+}
 
 io.on('connection', function(socket) {
     connections.push(socket);
+    colors[socket] = get_random_color();
     posts.forEach(function(post) {
         socket.emit("message", post);
     });
     socket.on('message', function(message){
-        console.log(message);
-        posts.push(message);
+        var postWithColor ={
+            author: message.author,
+            text: message.text,
+            color: colors[socket]
+        };
+        console.log(postWithColor);
+        posts.push(postWithColor);
         connections.forEach(function(sock) {
-            sock.emit("message", message);
+            sock.emit("message", postWithColor);
         });
     });
 });

@@ -1,0 +1,31 @@
+.wrapper {
+    max-width: 800px;
+    margin: auto;
+    padding: 10px;
+}
+
+.title {
+    text-align: center;
+    font-size: 40px;
+}
+
+.form > input {
+    display: inline-block;
+}
+
+.tags {
+    display: inline-block;
+}
+
+.name {
+    width: 20%;
+}
+
+.text {
+    width: 65%;
+}
+
+.submit {
+    width: 10%;
+    float: right;
+}

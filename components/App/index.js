@@ -1,7 +1,7 @@
 import React from 'react';
 import Post from './../Post';
 import {Decorator as Cerebral} from 'cerebral-view-react';
-
+import styles from './styles.css';
 
 @Cerebral({
     title: ['main', 'title'],
@@ -18,6 +18,7 @@ class App extends React.Component {
         const posts = this.props.messages.map((post, index)=> {
             return (
                 <Post
+                    color={post.color}
                     key={index}
                     author={post.author}
                     text={post.text}
@@ -26,26 +27,37 @@ class App extends React.Component {
         });
 
         return (
-            <div>
-                {this.props.title}
-                <form id="form" onSubmit={(e) => { this.handleSubmit(e); }}>
-                    <p>Name:</p>
+            <div className={styles.wrapper}>
+                <h1 className={styles.title}>{this.props.title}</h1>
+                <form
+                    id="form"
+                    className={styles.form}
+                    onSubmit={(e) => {
+                        this.handleSubmit(e);
+                    }}
+                >
                     <input
+                        className={styles.name}
                         id="name"
                         value={this.props.author}
+                        placeholder="Name"
                         onChange={(e) => {
                             this.props.signals.main.authorChanged({author: e.target.value});
                         }}
                     />
-                    <p>Message:</p>
                     <input
+                        className={styles.text}
                         id="message"
                         value={this.props.text}
+                        placeholder="Message"
                         onChange={(e) => {
                             this.props.signals.main.textChanged({text: e.target.value});
                         }}
                     />
-                    <input type="submit" />
+                    <input
+                        className={styles.submit}
+                        type="submit"
+                    />
                 </form>
                 {posts}
             </div>

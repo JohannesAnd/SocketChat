@@ -13,10 +13,12 @@
     "cerebral-module-http": "^0.1.1",
     "cerebral-module-router": "^0.14.3",
     "cerebral-view-react": "^0.11.17",
+    "css-loader": "^0.23.1",
     "express": "^4.13.4",
     "react": "^15.0.2",
     "react-dom": "^15.0.2",
     "socket.io": "^1.4.5",
+    "style-loader": "^0.13.1",
     "webpack": "^1.13.0",
     "webpack-dev-middleware": "^1.6.1"
   },
