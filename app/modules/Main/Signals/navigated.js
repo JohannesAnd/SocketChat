@@ -1,4 +1,4 @@
-import set from 'cerebral-addons/set';
+import set from '../../../../node_modules/cerebral-addons/set';
 import connectToSocket from './../../SocketIO/Actions/connectToSocket';
 
 export default [
