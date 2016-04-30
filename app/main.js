@@ -18,7 +18,7 @@ controller.addModules({
     main: Main(),
     socketIO: SocketIO({
         onMessage: '.main.messageReceived',
-        url: 'localhost:8080'
+        url: 'siochat.herokuapp.com'
     }),
     http: Http(),
     devtools: Devtools(),

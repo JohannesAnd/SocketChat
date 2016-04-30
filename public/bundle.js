@@ -103,7 +103,7 @@
 	    main: (0, _Main2.default)(),
 	    socketIO: (0, _SocketIO2.default)({
 	        onMessage: '.main.messageReceived',
-	        url: 'localhost:8080'
+	        url: 'siochat.herokuapp.com'
 	    }),
 	    http: (0, _cerebralModuleHttp2.default)(),
 	    devtools: (0, _cerebralModuleDevtools2.default)(),
