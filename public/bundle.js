@@ -32478,7 +32478,8 @@
 	        value: function render() {
 	            var _this2 = this;
 
-	            var posts = this.props.messages.map(function (post, index) {
+	            var rev = this.props.messages.slice().reverse();
+	            var posts = rev.map(function (post, index) {
 	                return _react2.default.createElement(_Post2.default, {
 	                    color: post.color,
 	                    key: index,

@@ -15,7 +15,8 @@ class App extends React.Component {
         this.props.signals.socketIO.messageSubmitted();
     }
     render() {
-        const posts = this.props.messages.map((post, index)=> {
+        const rev = this.props.messages.slice().reverse();
+        const posts = rev.map((post, index)=> {
             return (
                 <Post
                     color={post.color}
