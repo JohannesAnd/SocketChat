@@ -33,7 +33,6 @@ var server = app.listen(process.env.PORT || 8080);
 var io = require('socket.io').listen(server);
 
 var connections = [];
-var colors = {}
 var posts = [];
 
 function get_random_color() {
@@ -46,7 +45,7 @@ function get_random_color() {
 
 io.on('connection', function(socket) {
     connections.push(socket);
-    colors[socket] = get_random_color();
+    var color = get_random_color();
     posts.forEach(function(post) {
         socket.emit("message", post);
     });
@@ -54,9 +53,8 @@ io.on('connection', function(socket) {
         var postWithColor ={
             author: message.author,
             text: message.text,
-            color: colors[socket]
+            color: color
         };
-        console.log(postWithColor);
         posts.push(postWithColor);
         connections.forEach(function(sock) {
             sock.emit("message", postWithColor);
